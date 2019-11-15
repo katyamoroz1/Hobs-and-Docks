@@ -26,9 +26,8 @@ public void run() {
                 } else {
                     System.out.printf("Корабль с %d килогаммами хлеба утонул!\n", ship.volume);
                 }
-                Thread.currentThread().sleep(3000);
-            }
-            if (foodValue < 0.66) {
+                Thread.currentThread().sleep(700);
+            } else if (foodValue < 0.66) {
                 Ship ship = new Ship(((int) (Math.random() * 3) + 1) * 10, food.sausage);
                 if (Ship.shipsInQueue.size() < 5) {
                     Ship.shipsInQueue.add(ship);
@@ -36,9 +35,8 @@ public void run() {
                 } else {
                     System.out.printf("Корабль с %d килогаммами сосисок утонул!\n", ship.volume);
                 }
-                Thread.currentThread().sleep(3000);
-            }
-            if (foodValue <= 1) {
+                Thread.currentThread().sleep(700);
+            } else if (foodValue <= 1) {
                 Ship ship = new Ship(((int) (Math.random() * 3) + 1) * 10, food.mayonnaise);
                 if (Ship.shipsInQueue.size() < 5) {
                     Ship.shipsInQueue.add(ship);
@@ -46,7 +44,7 @@ public void run() {
                 } else {
                     System.out.printf("Корабль с %d килогаммами майонеза утонул!\n", ship.volume);
                 }
-                Thread.currentThread().sleep(3000);
+                Thread.currentThread().sleep(700);
             }
         }
     } catch (InterruptedException e) {}

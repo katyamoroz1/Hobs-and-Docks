@@ -1,41 +1,23 @@
 package ships;
 
-import station.Station;
+import Generate.GenerateShips;
+import station.*;
 
-public class Ship implements Runnable{
-    public Ship(int v, String f) {
-        volume = v;
-        food = f;
+import java.util.LinkedList;
+
+public class Ship {
+    public Ship(int volume, GenerateShips.food fod) {
+        this.volume = volume;
+        this.fod = fod;
     }
 
     public int volume;
-
-    public String food;
-    @Override
-    public void run() {
-        System.out.printf("Корабль с %s хочет разгрузиться\n", food);
-        try{
-            Station.SEMAPHORE.acquire();
-            int station = -1;
-            synchronized (Station.stations){
-                for (int i = 0; i < 5; i++)
-                    if (!Station.stations[i]) {
-                        Station.stations[i] = true;
-                        station = i;
-                        System.out.printf("Корабль %s припарковался на месте %d.\n", food, i);
-                        break;
-                    }
-            }
-
-            Thread.sleep(5000);
-
-            synchronized (Station.stations) {
-                Station.stations[station] = false;
-            }
-
-            Station.SEMAPHORE.release();
-            System.out.printf("Корабль %s разгрузился.\n", food);
-        } catch (InterruptedException e) {
+    public GenerateShips.food fod;
+    public static volatile java.util.Queue<Ship> shipsInQueue = new LinkedList<>();
+    public static synchronized Ship firstShip(GenerateShips.food fod) {
+        if(!shipsInQueue.isEmpty() && shipsInQueue.peek().fod == fod) {
+            return shipsInQueue.poll();
         }
+        return null;
     }
 }

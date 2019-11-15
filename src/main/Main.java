@@ -1,22 +1,22 @@
 package main;
 
+import Generate.GenerateShips;
 import ships.Ship;
+import station.BreadStation;
+import station.MayonnaiseStation;
+import station.SausageStation;
 
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        for (int i = 1; i <= 2; i++) {
-            new Thread(new Ship(200, "хлеб")).start();
-            Thread.sleep(400);
-        }
-        for (int i = 1; i <= 2; i++) {
-            new Thread(new Ship(200, "сосиска")).start();
-            Thread.sleep(400);
-        }
-        for (int i = 1; i <= 2; i++) {
-            new Thread(new Ship(200, "майонез")).start();
-            Thread.sleep(400);
-        }
+        GenerateShips generate = new GenerateShips();
+        BreadStation bread = new BreadStation();
+        SausageStation sausage = new SausageStation();
+        MayonnaiseStation mayonnaise = new MayonnaiseStation();
+        generate.start();
+        bread.start();
+        sausage.start();
+        mayonnaise.start();
     }
 }
 

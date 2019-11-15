@@ -6,25 +6,29 @@ import Generate.GenerateShips;
 
 
 public class BreadStation extends Thread {
+
+//    private FoodType type;
+
     public BreadStation() {
     }
 
-public static volatile int store = 0;
+    public static volatile int store = 0;
 
     @Override
     public void run() {
         try {
-        while (true) {
-            Ship ship = Ship.firstShip(GenerateShips.food.bread);
+            while (true) {
+                Ship ship = Ship.firstShip(GenerateShips.Food.bread);
                 if (ship != null) {
-                    if (ship.fod == GenerateShips.food.bread) {
-                    sleep(1000 * ship.volume / 5);
+                    if (ship.fod == GenerateShips.Food.bread) {
+                        sleep(1000 * ship.volume / 5);
                         System.out.printf("Корабль с %d килограммами хлеба разгрузился!\n", ship.volume);
                         store += ship.volume;
                     }
                 }
+            }
+        } catch (InterruptedException e) {
         }
-        } catch (InterruptedException e) {}
     }
 
     public static synchronized void breadForSandwich() {

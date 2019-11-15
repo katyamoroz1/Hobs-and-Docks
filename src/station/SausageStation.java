@@ -1,4 +1,5 @@
 package station;
+
 import hobs.Person;
 import ships.Ship;
 import Generate.GenerateShips;
@@ -14,17 +15,20 @@ public class SausageStation extends Thread {
     public void run() {
         try {
             while (true) {
-                Ship ship = Ship.firstShip(GenerateShips.food.sausage);
+                Ship ship = Ship.firstShip(GenerateShips.Food.sausage);
                 if (ship != null) {
-                    if (ship.fod == GenerateShips.food.sausage) {
-                    sleep(1000 * ship.volume / 5);
-                            System.out.printf("Корабль с %d килограммами сосисок разгрузился!\n", ship.volume);
-                            store += ship.volume;
-                        }
+                    if (ship.fod == GenerateShips.Food.sausage) {
+                        sleep(1000 * ship.volume / 5);
+                        System.out.printf("Корабль с %d килограммами сосисок разгрузился!\n", ship.volume);
+                        store += ship.volume;
                     }
+                }
             }
-        } catch (InterruptedException e) {}
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
+
     public static synchronized void sausageForSandwich() {
         if (store != 0) {
             store--;

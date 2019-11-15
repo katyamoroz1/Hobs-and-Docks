@@ -13,10 +13,6 @@ import station.SausageStation;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-
-//        Logger logger = (Logger) LoggerFactory.getLogger("Logger name");
-//        logger.setLevel(Level.INFO);
-//        logger.info("asdfasdf {} is {}", 5, "235");
         GenerateShips generate = new GenerateShips();
         BreadStation bread = new BreadStation();
         SausageStation sausage = new SausageStation();

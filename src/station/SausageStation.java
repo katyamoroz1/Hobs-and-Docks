@@ -1,6 +1,8 @@
 package station;
 
+import ch.qos.logback.classic.Logger;
 import hobs.Person;
+import org.slf4j.LoggerFactory;
 import ships.Ship;
 import Generate.GenerateShips;
 
@@ -8,6 +10,8 @@ import Generate.GenerateShips;
 public class SausageStation extends Thread {
     public SausageStation() {
     }
+
+    public static Logger logger = (Logger) LoggerFactory.getLogger("SausageStation");
 
     public static volatile int store = 0;
 
@@ -19,7 +23,8 @@ public class SausageStation extends Thread {
                 if (ship != null) {
                     if (ship.fod == GenerateShips.Food.sausage) {
                         sleep(1000 * ship.volume / 5);
-                        System.out.printf("Корабль с %d килограммами сосисок разгрузился!\n", ship.volume);
+//                        System.out.printf("Корабль с %d килограммами сосисок разгрузился!\n", ship.volume);
+                        logger.info("Корабль с {} килограммами сосисок разгрузился!", ship.volume);
                         store += ship.volume;
                     }
                 }
@@ -33,7 +38,8 @@ public class SausageStation extends Thread {
         if (store != 0) {
             store--;
             Person.sausageForSandwich++;
-            System.out.printf("Бродяга украл сосиску, теперь есть %d сосисок\n", Person.sausageForSandwich);
+//            System.out.printf("Бродяга украл сосиску, теперь есть %d сосисок\n", Person.sausageForSandwich);
+            logger.info("Бродяга украл сосиску, теперь есть {} сосисок", Person.sausageForSandwich);
         }
     }
 }

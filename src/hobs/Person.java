@@ -1,9 +1,11 @@
 package hobs;
 
+import org.slf4j.LoggerFactory;
 import station.BreadStation;
 import station.MayonnaiseStation;
 import station.SausageStation;
 
+import java.util.logging.Logger;
 import java.util.concurrent.BrokenBarrierException;
 
 public class Person extends Thread {

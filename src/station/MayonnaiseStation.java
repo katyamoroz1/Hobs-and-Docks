@@ -22,7 +22,6 @@ public class MayonnaiseStation extends Thread {
                 if (ship != null) {
                     if (ship.fod == GenerateShips.Food.mayonnaise) {
                     sleep(1000 * ship.volume / 5);
-//                            System.out.printf("Корабль с %d килограммами майонеза разгрузился!\n", ship.volume);
                         logger.info("Корабль с {} килограммами майонеза разгрузился!", ship.volume);
                             store += ship.volume;
                         }
@@ -36,7 +35,6 @@ public class MayonnaiseStation extends Thread {
         if (store != 0) {
             store--;
             Person.mayonnaiseForSandwich++;
-//            System.out.printf("Бродяга украл майонез, теперь есть %d майонеза\n", Person.mayonnaiseForSandwich);
             logger.info("Бродяга украл майонез, теперь есть {} майонеза", Person.mayonnaiseForSandwich);
         }
     }

@@ -12,7 +12,6 @@ public class Cook implements Runnable {
         Person.breadForSandwich -= 8;
         Person.sausageForSandwich -= 8;
         Person.mayonnaiseForSandwich -= 8;
-//        System.out.println("БРОДЯГИ КУШАЮТ!!!");
         logger.info("БРОДЯГИ КУШАЮТ!!!");
     }
 }

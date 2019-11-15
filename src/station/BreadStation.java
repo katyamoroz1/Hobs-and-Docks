@@ -9,8 +9,6 @@ import Generate.GenerateShips;
 
 public class BreadStation extends Thread {
 
-//    private FoodType type;
-
     public BreadStation() {
     }
 
@@ -26,7 +24,6 @@ public class BreadStation extends Thread {
                 if (ship != null) {
                     if (ship.fod == GenerateShips.Food.bread) {
                         sleep(1000 * ship.volume / 5);
-//                        System.out.printf("Корабль с %d килограммами хлеба разгрузился!\n", ship.volume);
                         logger.info("Корабль с {} килограммами хлеба разгрузился!", ship.volume);
                         store += ship.volume;
                     }
@@ -40,7 +37,6 @@ public class BreadStation extends Thread {
         if (store != 0) {
             store--;
             Person.breadForSandwich++;
-//            System.out.printf("Бродяга украл хлеб, теперь есть %d хлеба\n", Person.breadForSandwich);
             logger.info("Бродяга украл хлеб, теперь есть {} хлеба", Person.breadForSandwich);
         }
     }

@@ -25,13 +25,11 @@ public class Person extends Thread {
             while (true) {
                 if (cooking < 2) {
                     ++cooking;
-//                    System.out.println("I am in\n");
                     Barrier.BARRIER.await();
                 } else {
                     double value = Math.random();
                     if (value < 0.33) {
                         if (BreadStation.store != 0) {
-//                            System.out.println(getName());
                             BreadStation.breadForSandwich();
                             sleep(3000);
                         } else {
@@ -40,7 +38,6 @@ public class Person extends Thread {
                         }
                     } else if (value < 0.66) {
                         if (SausageStation.store != 0) {
-//                            System.out.println(getName());
                             SausageStation.sausageForSandwich();
                             sleep(3000);
                         } else {
@@ -49,7 +46,6 @@ public class Person extends Thread {
                         }
                     } else {
                         if (MayonnaiseStation.store != 0) {
-//                            System.out.println(getName());
                             MayonnaiseStation.mayonnaiseForSandwich();
                             sleep(3000);
                         } else {
